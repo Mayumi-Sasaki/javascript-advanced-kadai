@@ -98,12 +98,14 @@ const rankCheck = score => {
 const gameOver = id => {
   clearInterval(id);
 
-  const result = confirm(rankCheck(score));
+  setTimeout(() => {
 
-  // OKボタンをクリックされたらリロードする
-  if(result == true) {
-    window.location.reload();
-  }
+    const result = confirm(rankCheck(score));
+    // OKボタンをクリックされたらリロードする
+    if(result == true) {
+      window.location.reload(); 
+      }
+    }, 10);
 };
 
 // カウントダウンタイマー
@@ -122,12 +124,8 @@ const timer = () => {
     if(time <= 0) {
       typedfield.textContent = "";
       untypedfield.textContent = "タイムアップ";
-      // 100ms後に背景色を元に戻す
-      setTimeout(() => {
-        gameOver(id);
-      }, 10);
-        
-      }
+       gameOver(id);
+    }
   }, 1000);
 };
 
